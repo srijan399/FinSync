@@ -23,16 +23,18 @@ body {
     cursor: pointer;
     font-size: 20px;
     transition: background-color 0.3s ease;
+    animation: glowing 2s infinite;
   }
   
   .butt:hover {
     background-color: #080808;
+    border: 4px solid white;
   }
   .button{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 30px;
+    padding-top: 50px;
   }
   .navbar {
     background-color: #ffffff;
@@ -103,5 +105,10 @@ body {
 }
 .navbar ul li:hover::after{
   width: 100%;
+}
+@keyframes glowing {
+  0% { box-shadow: 0 0 10px rgb(255, 255, 255); }
+  50% { box-shadow: 0 0 20px rgb(42, 41, 41), 0 0 30px rgb(50, 50, 50); }
+  100% { box-shadow: 0 0 10px rgb(14, 14, 14); }
 }
 
