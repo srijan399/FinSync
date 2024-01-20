@@ -2,11 +2,13 @@ from flask import Flask, render_template, session, redirect, url_for, jsonify, r
 from flask_session import Session
 from cs50 import SQL
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import timedelta
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+app.permanent_session_lifetime = timedelta(minutes=5)
 
 db = SQL("sqlite:///finsync.db")
 
@@ -38,7 +40,7 @@ def login():
                     return redirect('/dashboard')
             
                 else:
-                    alert = "Incorrect username or password"
+                    alert = "Incorrect username or password."
                     return render_template('login.html', alert = alert) #to add a msg if login credentials are incorrect
            
             else:
@@ -54,8 +56,6 @@ def dashboard():
     if request.method == "GET":
         logs = db.execute("SELECT desc, amount FROM log WHERE user_id = ?", user_id)
         bal = db.execute("SELECT balance FROM finance WHERE user_id = ?", user_id)
-
-        # bal -= amount
 
         return render_template('dashboard.html', logs = logs, bal = bal)
     
@@ -88,7 +88,7 @@ def register():
 
         for user in users:
             if username in user['username']:
-                alert = "Username already exists. Try a different username"
+                alert = "Username already exists. Try a different username."
                 return render_template('signup.html', alert = alert) #to add a msg if username already exists
             
         db.execute("INSERT INTO users (username, email, password) VALUES(?, ?, ?)", username, email, password)
