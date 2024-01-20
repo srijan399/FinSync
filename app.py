@@ -44,3 +44,7 @@ def login():
             else:
                 alert = "Incorrect username or password"
                 return render_template('login.html', alert = alert)
+            
+
+if __name__ == '__main__':
+    app.run(debug=True)
