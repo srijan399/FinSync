@@ -1,0 +1,113 @@
+
+    @font-face {
+      font-family: "happiness";
+      src: url("/static/fonts/happiness.ttf");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #ffffff;
+      background-image: linear-gradient(rgba(0,0,0,0.75),rgba(196, 185, 185, 0.75)),url("/static/money.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Times New Roman';
+      
+    }
+
+    .login-form {
+      background-color: rgb(0, 0, 0);
+      background: transparent;
+      backdrop-filter: blur(15px);
+      border: 5px solid rgb(192, 194, 194);
+      box-shadow: 0 0 20px rgba(3, 3, 3, 0.2);
+      padding: 20px;
+      border-radius: 15px;
+      width: 30%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 900;
+      color: rgb(0, 0, 0);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 3px solid #000000;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .signup-button {
+      width: 30%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #c51f1f;
+      color: white;
+      cursor: pointer;
+    }
+
+    .signup-button:hover {
+      background-color: #225f9f;
+      color: black;
+    }
+
+    a {
+      color: bisque;
+      text-decoration: none;
+    }
+
+    a:hover {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .uwu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @keyframes fadeIn {
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+
+  .login-form {
+      opacity: 0;
+      animation: fadeIn 1.5s ease-in-out forwards;
+  }
+  @keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+h1 {
+    opacity: 0;
+    animation: appear 1.5s ease-in-out forwards; 
+}

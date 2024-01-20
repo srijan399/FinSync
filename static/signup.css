@@ -1,0 +1,124 @@
+      @font-face {
+        font-family: "docktrin";
+        src: url("/static/fonts/docktrin.ttf");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "happiness";
+        src: url("/static/fonts/happiness.ttf");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: #ffffff;
+        background-image: linear-gradient(rgba(218, 212, 212, 0.75),rgba(39, 38, 38, 0.75)),url(/static/money.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      h1 {
+        text-align: center;
+        font-family: 'Times New Roman';
+      }
+
+      .signup-form {
+        background-color: #000000;
+        padding: 20px;
+        border-radius: 8px;
+        width: 30%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        color: #000000;
+        font-weight: bolder;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #000000;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .signup-button {
+        width: 50%;
+        padding : 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: hsl(0, 77%, 34%);
+        color: white;
+        cursor: pointer;
+        transition: 0.1s;
+      }
+
+      .signup-button:hover {
+        background-color: rgb(48, 9, 244);
+      }
+
+      a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+      }
+      a:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      .vev{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+     .signup-form {
+        opacity: 0;
+        animation: fadeIn 2s ease-in-out forwards; 
+    }
+    @keyframes typing {
+      from {
+          width: 0;
+      }
+      to {
+          width: 100%;
+      }
+  }
+
+  h1 {
+      overflow: hidden;
+      white-space: nowrap;
+      animation: typing 2s steps(20, end);
+  }
+  .signup-form{
+  backdrop-filter: blur(10px); 
+  border: 4px solid rgba(5, 5, 5, 0.5);
+  background: transparent;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(3, 3, 3, 0.2);
+  }
