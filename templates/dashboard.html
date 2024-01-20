@@ -216,7 +216,7 @@
     <header>
       <div class="navbar">
         <div class="logo">
-          <a href="dashboard.html">
+          <a href="/dashboard">
             <img
               src="/static/finsync (black).png"
               height="65px"
@@ -265,7 +265,9 @@
                     >
                       Account
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action"
+                    <a
+                      href="/about"
+                      class="list-group-item list-group-item-action"
                       >About us</a
                     >
 
@@ -312,18 +314,18 @@
 
         <table>
           <thead>
-              <tr>
-                  <th>Expenditure</th>
-                  <th>Reason</th>
-              </tr>
+            <tr>
+              <th>Expenditure</th>
+              <th>Reason</th>
+            </tr>
           </thead>
           <tbody>
-                  <tr>
-                      <td>{{ logs.desc }}</td>
-                          <td>{{ logs.amount }}</td>
-                  </tr>
+            <tr>
+              <td>{{ logs.desc }}</td>
+              <td>{{ logs.amount }}</td>
+            </tr>
           </tbody>
-      </table>
+        </table>
 
         <form id="logForm" action="/dashboard" method="POST">
           <div id="inputFields" style="display: none">
