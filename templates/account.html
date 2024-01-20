@@ -5,7 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/static/Favicon.png" type="image/x-icon" />
     <link rel="shortcut icon" href="/static/Favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/account.css">
     <title>Your Account</title>
   </head>
-  <body></body>
+
+  <body>
+    <div class="n">
+    <h1>Your Account :</h1>
+    <div class="showdetails">
+      <p><strong>Name:</strong> [Your Name]</p>
+        <p><strong>Email:</strong> [Your Email]</p>
+    </div>
+    </div>
+    <div class="m">
+    <h2>
+      Update Your Details :
+    </h2>
+    <div class="accountForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+      <div class="but">
+        <button type="button" onclick="updateDetails()">Update Details</button>
+      </div>
+
+    </div>
+  </div>
+   
+    <script>
+      function updateDetails() {
+          
+          var newName = document.getElementById("name").value;
+          var newEmail = document.getElementById("email").value;
+
+          
+          alert("Details updated:\nName: " + newName + "\nEmail: " + newEmail);
+      }
+  </script>
+  </body>
 </html>

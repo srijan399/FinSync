@@ -1,0 +1,36 @@
+body{
+    background: skyblue;
+    margin: 0;
+    padding: 0%;
+    font-family: 'Times New Roman';
+}
+.accountForm label{
+    margin: 8px;
+    display: block;
+}
+.n{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.showdetails{
+    padding-left: 20px;
+}
+.n{
+    padding-top: 150px;
+}
+.m{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+}
+.accountForm{
+    padding-left: 50px;
+}
+.accountForm button{
+    display: block;
+}
+.but{
+    padding-top: 50px;
+}
