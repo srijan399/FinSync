@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/static/Favicon.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="/static/Favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/static/login.css">
+  <title>Log in</title>
+</head>
+
+<body>
+  <div class="login-form">
+    <h1 style="font-size: 300%">Log In</h1>
+    <form action="/login" method="post">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Password</label>
+        <input type="password" id="email" name="password" required />
+      </div>
+      <p id="message" class="error" style="color: red;"></p>
+      <div class="golog">
+        <p style="text-align: right"><a href="#">Forgot password?</a></p>
+        <p>
+          Create a new account instead!
+          <a href="/signup">Sign Up</a>
+        </p>
+      </div>
+      <div class="uwu">
+      <button type="submit" class="signup-button">Log in</button>
+      </div>
+    </form>
+  </div>
+
+  {% if alert %}
+  <script>
+    const message = document.getElementById("message");
+    message.textContent = "{{ alert }}";
+  </script>
+  {% endif %}
+</body>
+
+</html>
