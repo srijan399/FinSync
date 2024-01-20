@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -216,7 +217,7 @@
     <header>
       <div class="navbar">
         <div class="logo">
-          <a href="/dashboard">
+          <a href="dashboard.html">
             <img
               src="/static/finsync (black).png"
               height="65px"
@@ -265,9 +266,7 @@
                     >
                       Account
                     </a>
-                    <a
-                      href="/about"
-                      class="list-group-item list-group-item-action"
+                    <a href="#" class="list-group-item list-group-item-action"
                       >About us</a
                     >
 
@@ -311,21 +310,23 @@
 
       <div class="log">
         <p style="text-align: center" id="log-text">LOG</p>
-
+      
         <table>
           <thead>
-            <tr>
-              <th>Expenditure</th>
-              <th>Reason</th>
-            </tr>
+              <tr>
+                  <th>Expenditure</th>
+                  <th>Reason</th>
+              </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{{ logs.desc }}</td>
-              <td>{{ logs.amount }}</td>
-            </tr>
+            {% for log in logs %}
+                  <tr>
+                      <td>{{ log.desc }}</td>
+                          <td>{{ log.amount }}</td>
+                  </tr>
+                {% endfor %}
           </tbody>
-        </table>
+      </table>
 
         <form id="logForm" action="/dashboard" method="POST">
           <div id="inputFields" style="display: none">
@@ -352,6 +353,8 @@
                 placeholder="Enter amount"
                 min="1"
               />
+              <input type="hidden" name="balance" value="{{bal[0].balance}}">
+              <input name="type" value="expense">
             </div>
           </div>
           <div class="button-container">

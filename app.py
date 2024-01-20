@@ -30,11 +30,13 @@ def login():
         password = request.form.get("password")
 
         users = db.execute("SELECT username FROM users")
-        
+        print(users)
+        print(user)
         for i in users:
+            print(i['username'], user)
             if user == i['username']:
                 pw = db.execute("SELECT password, user_id FROM users WHERE username = ?", user)
-
+                print(user)
                 if check_password_hash(pw[0]['password'], password):
                     session['user_id'] = pw[0]['user_id']
                     return redirect('/dashboard')
@@ -42,10 +44,9 @@ def login():
                 else:
                     alert = "Incorrect username or password."
                     return render_template('login.html', alert = alert) #to add a msg if login credentials are incorrect
-           
-            else:
-                alert = "Incorrect username or password"
-                return render_template('login.html', alert = alert)
+        
+        alert = "Incorrect username or password"
+        return render_template('login.html', alert = alert)
 
 @app.route('/dashboard', methods=["GET", "POST"])
 def dashboard():
