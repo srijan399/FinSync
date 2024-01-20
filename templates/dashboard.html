@@ -275,7 +275,7 @@
                   </div>
                 </div>
                 <div class="offcanvas-footer mt-auto">
-                  <form action="/logout" method="post">
+                  <form action="/logout">
                     <button type="submit" id="logout-btn">Logout</button>
                   </form>
                 </div>
@@ -309,6 +309,22 @@
 
       <div class="log">
         <p style="text-align: center" id="log-text">LOG</p>
+
+        <table>
+          <thead>
+              <tr>
+                  <th>Expenditure</th>
+                  <th>Reason</th>
+              </tr>
+          </thead>
+          <tbody>
+                  <tr>
+                      <td>{{ logs.desc }}</td>
+                          <td>{{ logs.amount }}</td>
+                  </tr>
+          </tbody>
+      </table>
+
         <form id="logForm" action="/dashboard" method="POST">
           <div id="inputFields" style="display: none">
             <div>
@@ -338,6 +354,8 @@
           </div>
           <div class="button-container">
             <button
+              name="type"
+              value="expense"
               type="submit"
               id="addButton"
               style="background-color: green; color: white"
