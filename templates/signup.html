@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/static/Favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="shortcut icon" href="/static/Favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="/static/signup.css">
     <title>Signup Page</title>
@@ -15,19 +18,23 @@
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" id="username" name="username" required />
+          <i class="fa-solid fa-user"></i>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" name="email" required />
+          <i class="fa-solid fa-envelope"></i>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required />
+          <i class="fa-solid fa-eye" id="show-password"></i>
         </div>
         <div class="form-group">
           <label for="password">Confirm Password</label>
           <input id="cnfrmpw" autocomplete="off" autofocus name="cpw"
                     type="password" oninput="checkPasswordMatch()" required>
+          <i class="fa-solid fa-lock"></i>
         </div>
         <p id="message" class="error" style="color: red;"></p>
         <div class="golog">

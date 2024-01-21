@@ -57,6 +57,8 @@ def dashboard():
     if request.method == "GET":
         logs = db.execute("SELECT desc, amount FROM log WHERE user_id = ?", user_id)
         bal = db.execute("SELECT balance FROM finance WHERE user_id = ?", user_id)
+        name = db.execute("SELECT username FROM users WHERE user_id = ?", user_id)
+        email = db.execute("SELECT email FROM users WHERE user_id = ?", user_id)
 
         return render_template('dashboard.html', logs = logs, bal = bal)
     
@@ -104,10 +106,17 @@ def register():
 def account():
     return render_template('account.html')
 
-@app.route('/logout')
+@app.route('/logout', methods=["GET", "POST"])
 def logout():
     session.clear()
     return redirect('/')
+
+@app.route('/help')
+def help():
+    # user_id = session["user_id"]
+    # name = db.execute("SELECT username FROM users WHERE user_id = ?", user_id)
+    # email = db.execute("SELECT email FROM users WHERE user_id = ?", user_id)
+    return render_template("financial.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

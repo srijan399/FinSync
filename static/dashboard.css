@@ -1,0 +1,201 @@
+@font-face {
+    font-family: "happiness";
+    src: url("/static/fonts/happiness.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "sobi";
+    src: url("/static/fonts/Sobiscuit.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/static/dashboardbg.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.logo {
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+.navbar {
+    height: 60px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.bars {
+    font-size: 1.5rem;
+    display: flex;
+}
+
+h3 {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.date {
+    height: 50px;
+    width: 35%;
+    padding: 8px;
+    margin: 70px 15px 0px 35px;
+    border: 2px solid black;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d8dbc5;
+    border: none;
+}
+
+#currentDate {
+    font-family: sobi;
+    font-size: 18px;
+}
+
+.log {
+    height: 400px;
+    width: 35%;
+    padding: 8px;
+    margin: 25px 15px 15px 35px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #d8dbc5;
+    opacity: 0.95;
+}
+
+#calendarInput {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#selectedDate {
+    margin-top: 10px;
+}
+
+#logout-btn {
+    background-color: red;
+    color: white;
+    border-radius: 12px;
+    font-size: 20px;
+    border: none;
+}
+
+.offcanvas-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.offcanvas-logout {
+    margin-top: auto;
+    padding: 10px 0;
+}
+
+#log-text {
+    font-size: 1.6rem;
+    font-weight: 500%;
+    font-family: sobi;
+}
+
+.btn-primary {
+    background-color: transparent;
+    color: black;
+    border: none;
+    font-size: 1.7rem;
+    margin-right: 5px;
+}
+
+.btn-primary:hover {
+    background-color: black;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: beige;
+    color: black;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: black;
+    color: white;
+}
+
+.button-container {
+    text-align: right;
+}
+
+#addButton {
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 15px;
+    display: flexbox;
+    position: fixed;
+    transform: translateX(-160px) translateY(-50px);
+}
+
+#amount-taker {
+    margin: 5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#reason-prompt {
+    margin-bottom: 2px;
+    margin-left: 5px;
+}
+
+.list-group {
+    font-size: 1.2rem;
+}
+
+.date2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calendarInput {
+    margin: 2px;
+}
+
+.right-corner {
+    display: flex;
+}
+
+.balance {
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 230px;
+    font-family: subi;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 7px;
+    margin: 4.5px;
+    margin-top: 4.8px;
+    border: 2px solid black;
+}
+
+table {
+    display: flexbox;
+    margin-bottom: 200px;
+    margin-left: 50px;
+    overflow: scroll;
+}

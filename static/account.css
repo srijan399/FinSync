@@ -1,12 +1,15 @@
 body{
-    background: skyblue;
+    background: linear-gradient(to bottom, #87CEEB, #00BFFF);
+    background-repeat: no-repeat;
+    background-color: #00BFFF;
     margin: 0;
     padding: 0%;
     font-family: 'Times New Roman';
 }
 .accountForm label{
-    margin: 8px;
+    margin: 5px;
     display: block;
+    font-size: larger;
 }
 .n{
     display: flex;
@@ -15,6 +18,7 @@ body{
 }
 .showdetails{
     padding-left: 20px;
+    font-size: larger;
 }
 .n{
     padding-top: 150px;
@@ -26,11 +30,32 @@ body{
     padding-top: 70px;
 }
 .accountForm{
-    padding-left: 50px;
+    padding-left: 90px;
 }
 .accountForm button{
     display: block;
+
 }
 .but{
     padding-top: 50px;
+}
+
+
+.accountForm button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accountForm button:hover {
+    background-color: #2980b9;
+}
+
+.accountForm button:active {
+    background-color: #21618c;
 }
