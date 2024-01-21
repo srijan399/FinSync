@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/static/Favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/static/Favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="shortcut icon" href="/static/Favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="/static/signup.css">
-    <title>Signup Page</title>
-  </head>
-  <body>
-    <div class="signup-form">
-      <h1 style="font-size: 300%">Sign up</h1>
-      <form action="/signup" method="post">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" required />
-          <i class="fa-solid fa-user"></i>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required />
-          <i class="fa-solid fa-envelope"></i>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required />
-          <i class="fa-solid fa-eye" id="show-password"></i>
-        </div>
-        <div class="form-group">
-          <label for="password">Confirm Password</label>
-          <input id="cnfrmpw" autocomplete="off" autofocus name="cpw"
-                    type="password" oninput="checkPasswordMatch()" required>
-          <i class="fa-solid fa-lock"></i>
-        </div>
-        <p id="message" class="error" style="color: red;"></p>
-        <div class="golog">
-          <p>Already a member? <a href="/login">Log in!</a></p>
-        </div>
-        <div class="vev">
-          <button type="submit" id="signup-button" class="signup-button" disabled>Sign Up</button>
-        </div>
-        
-      </form>
-    </div>
+  <link rel="stylesheet" href="/static/signup.css">
+  <title>Signup Page</title>
+</head>
 
-    <script src="/static/script.js"></script>
+<body>
+  <div class="signup-form">
+    <h1 style="font-size: 300%">Sign up</h1>
+    <form action="/signup" method="post">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+        <i class="fa-solid fa-eye" id="show-password"></i>
+      </div>
+      <div class="form-group">
+        <label for="password">Confirm Password</label>
+        <input id="cnfrmpw" autocomplete="off" autofocus name="cpw" type="password" oninput="checkPasswordMatch()"
+          required>
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <p id="message" class="error" style="color: red;"></p>
+      <div class="golog">
+        <p>Already a member? <a href="/login">Log in!</a></p>
+      </div>
+      <div class="vev">
+        <button type="submit" id="signup-button" class="signup-button" disabled>Sign Up</button>
+      </div>
 
-    {% if alert %}
-    <script>
-      const message = document.getElementById("message");
-      message.textContent = "{{ alert }}";
-    </script>
-    {% endif %}
-  </body>
+    </form>
+  </div>
+
+  <script src="/static/script.js"></script>
+
+  {% if alert %}
+  <script>
+    const message = document.getElementById("message");
+    message.textContent = "{{ alert }}";
+  </script>
+  {% endif %}
+</body>
+
 </html>
