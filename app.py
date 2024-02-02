@@ -3,14 +3,28 @@ from flask_session import Session
 from cs50 import SQL
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
+from functools import wraps
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-app.permanent_session_lifetime = timedelta(minutes=5)
+app.permanent_session_lifetime = timedelta(days=5)
 
 db = SQL("sqlite:///finsync.db")
+
+def login_required(f):
+    """
+    Decorate routes to require login.
+
+    http://flask.pocoo.org/docs/0.12/patterns/viewdecorators/
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            return redirect("/login")
+        return f(*args, **kwargs)
+    return decorated_function
 
 @app.route('/')
 def landing():
@@ -23,22 +37,23 @@ def about():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == 'GET':
-        return render_template('login.html')
+        if session.permanent:
+            return redirect('/dashboard')
+        
+        else:
+            return render_template('login.html')
     
     if request.method == 'POST':
         user = request.form.get("username")
         password = request.form.get("password")
 
         users = db.execute("SELECT username FROM users")
-        print(users)
-        print(user)
         for i in users:
-            print(i['username'], user)
             if user == i['username']:
                 pw = db.execute("SELECT password, user_id FROM users WHERE username = ?", user)
-                print(user)
                 if check_password_hash(pw[0]['password'], password):
                     session['user_id'] = pw[0]['user_id']
+                    session.permanent = True
                     return redirect('/dashboard')
             
                 else:
@@ -49,24 +64,19 @@ def login():
         return render_template('login.html', alert = alert)
 
 @app.route('/dashboard', methods=["GET", "POST"])
+@login_required
 def dashboard():
-    if 'user_id' not in session:
-        return redirect('/login')
-
     user_id = session["user_id"]
     if request.method == "GET":
-        logs = db.execute("SELECT desc, amount FROM log WHERE user_id = ?", user_id)
         bal = db.execute("SELECT balance FROM finance WHERE user_id = ?", user_id)
-        name = db.execute("SELECT username FROM users WHERE user_id = ?", user_id)
-        email = db.execute("SELECT email FROM users WHERE user_id = ?", user_id)
 
-        return render_template('dashboard.html', logs = logs, bal = bal)
+        return render_template('dashboard.html', bal = bal)
     
     else:
-        date = request.form.get("date")
         desc = request.form.get("desc")
         amt = int(request.form.get("amount"))
         type = request.form.get("type")
+        date = request.form.get("date")
 
         if(type == "expense"):
             amt = amt * (-1)
@@ -98,13 +108,17 @@ def register():
         id = db.execute("SELECT user_id FROM users WHERE username = ?", username)
         session['user_id'] = id[0]['user_id']
         db.execute("INSERT INTO finance (balance, user_id) VALUES(?, ?)", 0, session["user_id"])
+        session.permanent = True
         return redirect('/dashboard')
     
     return render_template("signup.html")
 
 @app.route('/acc')
+@login_required
 def account():
-    return render_template('account.html')
+    user_id = session["user_id"]
+    detail = db.execute("SELECT username, email FROM users WHERE user_id = ?", user_id)
+    return render_template('account.html', detail=detail)
 
 @app.route('/logout', methods=["GET", "POST"])
 def logout():
@@ -113,10 +127,17 @@ def logout():
 
 @app.route('/help')
 def help():
-    # user_id = session["user_id"]
-    # name = db.execute("SELECT username FROM users WHERE user_id = ?", user_id)
-    # email = db.execute("SELECT email FROM users WHERE user_id = ?", user_id)
     return render_template("financial.html")
+
+@app.route('/get_logs', methods=["POST"])
+@login_required
+def get_log():
+    user_id = session["user_id"]
+    date = request.form.get("date")
+
+    data = db.execute("SELECT * FROM log WHERE user_id = ? AND date = ?", user_id, date)
+    return jsonify(data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

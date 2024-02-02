@@ -1,8 +1,12 @@
 body {
+  height: 100vh;
   background-color: #ffffff;
   margin: 0;
   padding: 0%;
   font-family: 'Times New Roman';
+  background: linear-gradient(50deg, #ff6347, #87ceeb);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .ima{
@@ -30,16 +34,20 @@ body {
     background-color: #080808;
     border: 4px solid white;
   }
+
   .button{
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 50px;
   }
+
   .navbar {
-    background-color: #ffffff;
+    background-color: transparent;
     padding: 15px 15px;
     text-align: center;
+    width: 150%;
+    border-bottom: 2px solid rgb(139, 3, 3);
   }
   
   .navbar ul {
@@ -58,6 +66,7 @@ body {
 .ima {
   opacity: 0;
   animation: fadeIn 2s ease-in-out forwards;
+  filter: drop-shadow(10px 10px 10px black);
 }
 
 @keyframes fadeIn {
@@ -110,5 +119,9 @@ body {
   0% { box-shadow: 0 0 10px rgb(255, 255, 255); }
   50% { box-shadow: 0 0 20px rgb(42, 41, 41), 0 0 30px rgb(50, 50, 50); }
   100% { box-shadow: 0 0 10px rgb(14, 14, 14); }
+}
+
+#navimg {
+  filter: drop-shadow(10px 10px 10px black);
 }
 

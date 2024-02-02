@@ -1,22 +1,22 @@
 CREATE TABLE users (
-user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-username TEXT NOT NULL,
-email TEXT NOT NULL,
-password TEXT NOT NULL
+    user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    email TEXT NOT NULL,
+    password TEXT NOT NULL
 );
 
 CREATE TABLE log (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-user_id INTEGER,
-amount INTEGER,
-desc TEXT,
-date TEXT,
-FOREIGN KEY(user_id) REFERENCES users(user_id)
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    amount INTEGER,
+    desc TEXT,
+    date TEXT,
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE finance (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-balance INTEGER,
-user_id INTEGER,
-FOREIGN KEY(user_id) REFERENCES users(user_id)
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    balance INTEGER,
+    user_id INTEGER,
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
 );

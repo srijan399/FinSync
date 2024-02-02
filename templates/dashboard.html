@@ -71,7 +71,7 @@
         <ul class="dropdown-menu">
           <li>
             <div class="date2">
-              <input type="date" id="calendarInput" name="date">
+              <input type="date" id="calendarInput">
               <div id="selectedDate"></div>
             </div>
           </li>
@@ -89,44 +89,41 @@
             <th>Expenditure</th>
           </tr>
         </thead>
-        <tbody>
-          {% for log in logs %}
-          <tr>
-            <td>{{ log.desc }}</td>
-            <td>{{ log.amount }}</td>
-          </tr>
-          {% endfor %}
+        <tbody id="tabil">
         </tbody>
       </table>
 
-      <form id="logForm" action="/dashboard" method="POST">
-        <div id="inputFields" style="display: none">
-          <div>
-            <p id="reason-prompt">Where did you spend your money?</p>
-            <input list="options" id="reason" name="desc" placeholder="Reason?" style="margin: 5px"
-              autocomplete="off" />
-            <datalist id="options">
-              <option value="Shopping"></option>
-              <option value="Travel"></option>
-              <option value="Outing"></option>
-            </datalist>
+      <div class="logg">
+        <form id="logForm" action="/dashboard" method="POST">
+          <div id="inputFields" style="display: none">
+            <div>
+              <p id="reason-prompt">Where did you spend your money?</p>
+              <input list="options" id="reason" name="desc" placeholder="Reason?" style="margin: 5px"
+                autocomplete="off" />
+              <datalist id="options">
+                <option value="Shopping"></option>
+                <option value="Travel"></option>
+                <option value="Outing"></option>
+              </datalist>
+            </div>
+            <div>
+              <input type="number" id="amount-taker" name="amount" placeholder="Enter amount" min="1" />
+              <input type="hidden" name="balance" value="{{bal[0].balance}}">
+              <input type="hidden" name="date" id="date">
+              <select name="type">
+                <option>expense</option>
+                <option>income</option>
+              </select>
+            </div>
           </div>
-          <div>
-            <input type="number" id="amount-taker" name="amount" placeholder="Enter amount" min="1" />
-            <input type="hidden" name="balance" value="{{bal[0].balance}}">
-            <select name="type">
-              <option>expense</option>
-              <option>income</option>
-            </select>
+          <div class="button-container">
+            <button name="type" value="expense" type="submit" id="addButton"
+              style="background-color: green; color: white">
+              Add Transaction
+            </button>
           </div>
-        </div>
-        <div class="button-container">
-          <button name="type" value="expense" type="submit" id="addButton"
-            style="background-color: green; color: white">
-            Add Transaction
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -134,78 +131,7 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
 
-  <script>
-    let finalDate;
-
-    function updateDateSelected(selectedDate) {
-      const options = {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      };
-
-      let dateString;
-      if (selectedDate) {
-        // Format the selected date
-        finalDate = new Date(selectedDate);
-        dateString = new Date(selectedDate).toLocaleDateString(
-          "en-US",
-          options
-        );
-      } else {
-        // Format the current date
-        finalDate = new Date();
-        dateString = new Date().toLocaleDateString("en-US", options);
-      }
-
-      // Insert a comma after the weekday
-      dateString = dateString.replace(/^(\w+)\s/, "$1, ");
-
-      // Update the currentDate div
-      document.getElementById("currentDate").textContent = dateString;
-    }
-
-    // Set the current date on page load
-    window.onload = function () {
-      updateDateSelected();
-    };
-
-    // Update the date when a new date is selected
-    document
-      .getElementById("calendarInput")
-      .addEventListener("change", function () {
-        updateDateSelected(this.value);
-      });
-
-    document.addEventListener("DOMContentLoaded", function () {
-      var addButton = document.getElementById("addButton");
-      var inputFields = document.getElementById("inputFields");
-      var amountInput = document.getElementById("amount-taker");
-      var reasonInput = document.getElementById("reason");
-      var logForm = document.getElementById("logForm");
-
-      addButton.addEventListener("click", function (event) {
-        // Toggle input fields visibility
-        if (inputFields.style.display === "none") {
-          inputFields.style.display = "block";
-          event.preventDefault(); // Prevent form submission
-        } else {
-          // Check if both fields are filled and amount is valid
-          if (
-            amountInput.value && reasonInput.value && amountInput.value >= 1
-          ) {
-            logForm.submit(); // Submit the form
-          } else {
-            alert(
-              "Please fill in both fields and ensure amount is at least 1."
-            );
-            event.preventDefault(); // Prevent form submission
-          }
-        }
-      });
-    });
-  </script>
+  <script src="/static/dashboard.js"></script>
 </body>
 
 </html>

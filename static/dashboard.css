@@ -56,8 +56,9 @@ h3 {
 }
 
 #currentDate {
-    font-family: sobi;
-    font-size: 18px;
+    font-family: happiness;
+    word-spacing: 5px;
+    font-size: 1.5rem;
 }
 
 .log {
@@ -133,6 +134,7 @@ h3 {
 
 .button-container {
     text-align: right;
+    justify-content: end;
 }
 
 #addButton {
@@ -141,8 +143,6 @@ h3 {
     border: none;
     border-radius: 15px;
     display: flexbox;
-    position: fixed;
-    transform: translateX(-160px) translateY(-50px);
 }
 
 #amount-taker {
@@ -198,4 +198,18 @@ table {
     margin-bottom: 200px;
     margin-left: 50px;
     overflow: scroll;
+}
+
+.logg {
+    position: absolute;
+    margin-top: 240px;
+    margin-left: 30px;
+    width: 32%;
+    /* background-color: black; */
+    min-height: auto;
+
+    #addButton {
+        margin-top: 100px;
+        position: relative;
+    }
 }
