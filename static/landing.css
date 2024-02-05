@@ -4,9 +4,20 @@ body {
   margin: 0;
   padding: 0%;
   font-family: 'Times New Roman';
-  background: linear-gradient(50deg, #ff6347, #87ceeb);
+  background-image: linear-gradient(50deg, #ff6347, #87ceeb);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 150%;
+  animation: bg-animation 5s infinite alternate;
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+
+  100% {
+    background-position: right;
+  }
 }
 
 .ima {
