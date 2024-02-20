@@ -64,12 +64,12 @@ h3 {
 .log {
     height: 400px;
     width: 35%;
-    padding: 8px;
+    padding: 10px;
     margin: 25px 15px 15px 35px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items:normal;
     background-color: #d8dbc5;
     opacity: 0.95;
 }
@@ -211,5 +211,11 @@ table {
     #addButton {
         margin-top: 100px;
         position: relative;
+        margin-right: 5px;
+        margin-bottom: 5px;
     }
+}
+
+#tab-heads {
+    justify-content: space-between;
 }
