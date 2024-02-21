@@ -39,7 +39,7 @@ body {
   cursor: pointer;
   font-size: 20px;
   transition: background-color 0.3s ease;
-  animation: glowing 2s infinite;
+  animation: glowing 2s infinite alternate;
 }
 
 .butt:hover {
