@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, url_for, jsonify, request
+from flask import Flask, render_template, session, redirect, jsonify, request
 from flask_session import Session
 from cs50 import SQL
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -97,12 +97,14 @@ def register():
         email = request.form.get("email")
         password = generate_password_hash(request.form.get("password"))
 
-        users = db.execute("SELECT username FROM users")
+        users = db.execute("SELECT username, email FROM users")
 
         for user in users:
             if username in user['username']:
-                alert = "Username already exists. Try a different username."
-                return render_template('signup.html', alert = alert) #to add a msg if username already exists
+                return render_template('signup.html', alert = "Username already exists. Try a different username.") #to add a msg if username already exists
+            
+            elif email in user['email']:
+                return render_template('signup.html', alert = "The account already exists with this email.") #to add a msg if email already exists
             
         db.execute("INSERT INTO users (username, email, password) VALUES(?, ?, ?)", username, email, password)
         id = db.execute("SELECT user_id FROM users WHERE username = ?", username)
